@@ -5,6 +5,8 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   return (
+    <main className="bg-gray-100">
+
     <div className="flex flex-col justify-end h-svh p-4 bg-gray-100 sm:max-w-lg md:max-w-xl mx-auto">
       <h1 className="text-[1.6rem] font-semibold text-gray-900">
         Welcome to PopX
@@ -28,6 +30,7 @@ const LandingPage = () => {
         </button>
       </section>
     </div>
+    </main>
   );
 };
 
