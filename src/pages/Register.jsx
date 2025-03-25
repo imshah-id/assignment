@@ -96,35 +96,34 @@ const Register = () => {
             <p className="text-red-500 text-sm">{errors.company.message}</p>
           )}
 
-         
-            <label className="text-sm mx-2 mt-2  text-indigo-600">
-              Are you an agency?
+          <label className="text-sm mx-2 mt-2  text-indigo-600">
+            Are you an agency?
+          </label>
+          <div className="flex gap-4 mx-2">
+            <label className="flex items-center">
+              <input
+                type="radio"
+                {...register("agency", {
+                  required: "Please select an option",
+                })}
+                value="Yes"
+                className="accent-indigo-500 mr-2"
+              />
+              Yes
             </label>
-            <div className="flex gap-4 mx-2">
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  {...register("agency", {
-                    required: "Please select an option",
-                  })}
-                  value="Yes"
-                  className="accent-indigo-500 mr-2"
-                />
-                Yes
-              </label>
-              <label className="flex items-center">
-                <input
-                  className="accent-indigo-500 mr-2"
-                  type="radio"
-                  {...register("agency", {
-                    required: "Please select an option",
-                  })}
-                  value="No"
-                />
-                No
-              </label>
-            </div>
- 
+            <label className="flex items-center">
+              <input
+                className="accent-indigo-500 mr-2"
+                type="radio"
+                {...register("agency", {
+                  required: "Please select an option",
+                })}
+                value="No"
+              />
+              No
+            </label>
+          </div>
+
           {errors.agency && (
             <p className="text-red-500 text-sm">{errors.agency.message}</p>
           )}
@@ -133,9 +132,7 @@ const Register = () => {
             type="submit"
             disabled={!isValid}
             className={`font-semibold text-white p-2 mt-4 rounded-md w-full transition-all ${
-              isValid
-                ? "bg-indigo-600 hover:bg-indigo-700"
-                : "bg-gray-300 cursor-not-allowed"
+              isValid ? "bg-[#6C25FF]" : "bg-gray-300 cursor-not-allowed"
             }`}
           >
             Create Account

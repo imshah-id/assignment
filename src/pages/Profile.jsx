@@ -17,7 +17,7 @@ const Profile = () => {
               alt="Profile"
               className="w-16 h-16 rounded-full border"
             />
-            <div className="absolute bottom-0 right-0 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center cursor-pointer">
+            <div className="absolute bottom-0 right-0 w-6 h-6 bg-[#6C25FF] rounded-full flex items-center justify-center cursor-pointer">
               <FaCamera className="text-white text-xs" />
             </div>
           </div>
