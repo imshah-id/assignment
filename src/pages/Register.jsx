@@ -17,7 +17,7 @@ const Register = () => {
 
   return (
     <div className="bg-gray-100 flex justify-center items-center h-screen">
-      <div className="bg-white p-6   w-[350px] sm:w-[400px]">
+      <div className="h-svh p-6   w-[350px] sm:w-[400px]">
         <h2 className="text-[28px] font-medium text-[#1D2226] leading-[36px] font-rubik mb-4">
           Create your PopX account
         </h2>
