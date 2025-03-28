@@ -16,15 +16,15 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-gray-100 flex justify-center items-center h-screen">
-      <div className="h-svh p-6   w-[350px] sm:w-[400px]">
+    <div className="bg-gray-100 flex items-center h-screen">
+      <div className="h-svh p-6 flex flex-col w-[350px] sm:w-[400px]">
         <h2 className="text-[28px] font-medium text-[#1D2226] leading-[36px] font-rubik mb-4">
           Create your PopX account
         </h2>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col gap-4 font-rubik"
+          className="flex flex-col gap-4 flex-grow font-rubik"
         >
           {[
             { label: "Full Name", name: "fullName", placeholder: "Xavier doe" },
@@ -48,7 +48,7 @@ const Register = () => {
           ].map(({ label, name, placeholder, type = "text" }) => (
             <fieldset
               key={name}
-              className="border border-gray-300 rounded-md pb-2 px-3 "
+              className="border border-gray-300 rounded-md pb-2 px-3"
             >
               <legend className="text-[13px] font-rubik text-[#6C25FF] font-regular leading-[17px]">
                 {label} <span className="text-[#DD4A3D]">*</span>
@@ -100,17 +100,19 @@ const Register = () => {
             </p>
           )}
 
-          <button
-            type="submit"
-            disabled={!isValid}
-            className={`font-rubik font-medium text-[16px] leading-[17px] text-[#FFFFFF] p-3 rounded-lg w-full transition-all ${
-              isValid
-                ? "bg-[#6C25FF] hover:bg-[#5720D4]"
-                : "bg-gray-300 cursor-not-allowed"
-            }`}
-          >
-            Create Account
-          </button>
+          <div className="mt-auto">
+            <button
+              type="submit"
+              disabled={!isValid}
+              className={`font-rubik font-medium text-[16px] leading-[17px] text-[#FFFFFF] p-3 rounded-lg w-full transition-all ${
+                isValid
+                  ? "bg-[#6C25FF] hover:bg-[#5720D4]"
+                  : "bg-gray-300 cursor-not-allowed"
+              }`}
+            >
+              Create Account
+            </button>
+          </div>
         </form>
       </div>
     </div>

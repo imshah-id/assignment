@@ -15,7 +15,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center  min-h-screen bg-gray-100 px-4">
+    <div className="flex pt-4  min-h-screen bg-gray-100 px-4">
       <div className="w-full max-w-md   rounded-2xl p-2">
         {/* Heading */}
         <h2 className="text-[28px] font-medium text-[#1D2226] mb-2">
