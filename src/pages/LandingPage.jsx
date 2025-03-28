@@ -7,7 +7,7 @@ const LandingPage = () => {
   return (
     <main className="bg-gray-100">
       <div className="flex flex-col justify-end h-svh p-4 sm:max-w-lg md:max-w-xl mx-auto">
-        <h1 className="text-[28px] font-medium text-[#1D2226] leading-[17px] font-rubik">
+        <h1 className="text-[28px] mb-2 font-medium text-[#1D2226] leading-[17px] font-rubik">
           Welcome to PopX
         </h1>
         <p className="mt-1 mb-3 text-[18px] font-normal text-[#1D2226] leading-[26px] font-rubik">
