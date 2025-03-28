@@ -18,7 +18,7 @@ const Register = () => {
   return (
     <div className="bg-gray-100">
       <div className="h-screen p-4 sm:max-w-lg md:max-w-xl mx-auto">
-        <h2 className="text-3xl max-w-58  font-semibold text-gray-900 mb-4 mt-6">
+        <h2 className="text-3xl  font-semibold text-gray-900 mb-4 mt-6">
           Create your PopX account
         </h2>
 

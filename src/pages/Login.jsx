@@ -16,10 +16,10 @@ const Login = () => {
   return (
     <div className="bg-gray-100 ">
       <div className=" h-screen p-4 sm:max-w-lg md:max-w-xl mx-auto">
-        <h2 className="text-3xl max-w-58 font-semibold text-gray-900 mb-2 mt-6">
+        <h2 className="text-3xl  font-semibold text-gray-900 mb-2 mt-6">
           Sign in to your PopX account
         </h2>
-        <p className=" max-w-68 text-gray-500 mb-6">
+        <p className="  text-gray-500 mb-6">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
         <form onSubmit={handleSubmit(onSubmit)}>
