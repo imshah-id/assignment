@@ -16,123 +16,97 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-gray-100">
-      <div className="h-screen p-4 sm:max-w-lg md:max-w-xl mx-auto">
-        <h2 className="text-3xl  font-semibold text-gray-900 mb-4 mt-6">
+    <div className="bg-gray-100 flex justify-center items-center h-screen">
+      <div className="bg-white p-6 rounded-lg shadow-md w-[350px] sm:w-[400px]">
+        <h2 className="text-[28px] font-medium text-[#1D2226] leading-[36px] font-rubik mb-4">
           Create your PopX account
         </h2>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="gap-2 flex flex-col">
-          <fieldset className="border border-gray-300 pb-2 px-3 rounded-md">
-            <legend className="text-sm text-indigo-600">Full Name</legend>
-            <input
-              placeholder="Xavier"
-              {...register("fullName", { required: "Full name is required" })}
-              className="w-full outline-0 rounded-md "
-            />
-          </fieldset>
-          {errors.fullName && (
-            <p className="text-red-500 text-sm">{errors.fullName.message}</p>
-          )}
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-4 font-rubik"
+        >
+          {[
+            { label: "Full Name", name: "fullName", placeholder: "Xavier doe" },
+            { label: "Phone Number", name: "phone", placeholder: "1234567890" },
+            {
+              label: "Email Address",
+              name: "email",
+              placeholder: "xavier@example.com",
+            },
+            {
+              label: "Password",
+              name: "password",
+              placeholder: "Enter password",
+              type: "password",
+            },
+            {
+              label: "Company Name",
+              name: "company",
+              placeholder: "Xavier Pvt Ltd",
+            },
+          ].map(({ label, name, placeholder, type = "text" }) => (
+            <fieldset
+              key={name}
+              className="border border-gray-300 rounded-md pb-2 px-3 "
+            >
+              <legend className="text-[13px] font-rubik text-[#6C25FF] font-regular leading-[17px]">
+                {label} <span className="text-[#DD4A3D]">*</span>
+              </legend>
 
-          <fieldset className="border border-gray-300 pb-2 px-3 rounded-md mt-3">
-            <legend className="text-sm text-indigo-600">Phone Number</legend>
-            <input
-              placeholder="1234567890"
-              {...register("phone", {
-                required: "Phone number is required",
-                pattern: {
-                  value: /^[0-9]{10}$/,
-                  message: "Enter a valid 10-digit phone number",
-                },
-              })}
-              className="w-full outline-0 rounded-md "
-            />
-          </fieldset>
-          {errors.phone && (
-            <p className="text-red-500 text-sm">{errors.phone.message}</p>
-          )}
+              <input
+                type={type}
+                placeholder={placeholder}
+                {...register(name, { required: `${label} is required` })}
+                className="w-full text-[13px] text-[#1D2226] leading-[17px] outline-none font-[rubik]"
+              />
+            </fieldset>
+          ))}
 
-          <fieldset className="border border-gray-300 pb-2 px-3 rounded-md mt-3">
-            <legend className="text-sm text-indigo-600">Email Address</legend>
-            <input
-              placeholder="xavier@example.com"
-              {...register("email", {
-                required: "Email is required",
-                pattern: {
-                  value: /^\S+@\S+\.\S+$/,
-                  message: "Invalid email format",
-                },
-              })}
-              className="w-full outline-0 rounded-md "
-            />
-          </fieldset>
-          {errors.email && (
-            <p className="text-red-500 text-sm">{errors.email.message}</p>
-          )}
+          {Object.entries(errors).map(([key, error]) => (
+            <p
+              key={key}
+              className="text-[13px] font-rubik text-[#DD4A3D] leading-[17px]"
+            >
+              {error.message}
+            </p>
+          ))}
 
-          <fieldset className="border border-gray-300 pb-2 px-3 rounded-md mt-3">
-            <legend className="text-sm text-indigo-600">Password</legend>
-            <input
-              type="password"
-              placeholder="Enter password"
-              {...register("password", { required: "Password is required" })}
-              className="w-full outline-0 rounded-md "
-            />
-          </fieldset>
-          {errors.password && (
-            <p className="text-red-500 text-sm">{errors.password.message}</p>
-          )}
-
-          <fieldset className="border border-gray-300 pb-2 px-3 rounded-md mt-3">
-            <legend className="text-sm text-indigo-600">Company Name</legend>
-            <input
-              placeholder="xavier Pvt Ltd"
-              {...register("company", { required: "Company name is required" })}
-              className="w-full outline-0 rounded-md "
-            />
-          </fieldset>
-          {errors.company && (
-            <p className="text-red-500 text-sm">{errors.company.message}</p>
-          )}
-
-          <label className="text-sm mx-2 mt-2  text-indigo-600">
-            Are you an agency?
+          <label className="text-[14px] font-rubik font-regular text-[#1D2226] leading-[17px]">
+            Are you an Agency? <span className="text-[#DD4A3D]">*</span>
           </label>
-          <div className="flex gap-4 mx-2">
-            <label className="flex items-center">
-              <input
-                type="radio"
-                {...register("agency", {
-                  required: "Please select an option",
-                })}
-                value="Yes"
-                className="accent-indigo-500 mr-2"
-              />
-              Yes
-            </label>
-            <label className="flex items-center">
-              <input
-                className="accent-indigo-500 mr-2"
-                type="radio"
-                {...register("agency", {
-                  required: "Please select an option",
-                })}
-                value="No"
-              />
-              No
-            </label>
-          </div>
 
+          <div className="flex gap-4">
+            {["Yes", "No"].map((option) => (
+              <label
+                key={option}
+                className="flex items-center text-[13px] text-[#1D2226] leading-[17px]"
+              >
+                <input
+                  type="radio"
+                  {...register("agency", {
+                    required: "Please select an option",
+                  })}
+                  value={option}
+                  className="accent-[#6C25FF] w-4 h-4 mr-2"
+                />
+                {option}
+              </label>
+            ))}
+          </div>
           {errors.agency && (
-            <p className="text-red-500 text-sm">{errors.agency.message}</p>
+            <p className="text-[13px] font-rubik text-[#DD4A3D] leading-[17px]">
+              {errors.agency.message}
+            </p>
           )}
 
           <button
             type="submit"
             disabled={!isValid}
-            className={`font-semibold text-white p-2 mt-4 rounded-md w-full transition-all ${
-              isValid ? "bg-[#6C25FF]" : "bg-gray-300 cursor-not-allowed"
+            className={`font-rubik font-medium text-[16px] leading-[17px] text-[#FFFFFF] p-3 rounded-lg w-full transition-all ${
+              isValid
+                ? "bg-[#6C25FF] hover:bg-[#5720D4]"
+                : "bg-gray-300 cursor-not-allowed"
             }`}
           >
             Create Account

@@ -3,29 +3,37 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    formState: { errors,isValid },
-  } = useForm({mode:'onChange'});
+    formState: { errors, isValid },
+  } = useForm({ mode: "onChange" });
+
   const onSubmit = () => {
-    navigate('/profile')
+    navigate("/profile");
   };
 
   return (
-    <div className="bg-gray-100 ">
-      <div className=" h-screen p-4 sm:max-w-lg md:max-w-xl mx-auto">
-        <h2 className="text-3xl  font-semibold text-gray-900 mb-2 mt-6">
+    <div className="flex items-center  min-h-screen bg-gray-100 px-4">
+      <div className="w-full max-w-md   rounded-2xl p-2">
+        {/* Heading */}
+        <h2 className="text-[28px] font-medium text-[#1D2226] mb-2">
           Sign in to your PopX account
         </h2>
-        <p className="  text-gray-500 mb-6">
+        <p className="text-[18px] text-[#919191] mb-6">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <fieldset className="border border-gray-300 mb-4 pb-2 px-3 rounded-md">
-            <legend className="text-sm text-indigo-600  ">Email Address</legend>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {/* Email Field */}
+          <fieldset className="border border-gray-300 rounded-lg pb-2 ">
+            <legend className="text-[13px] text-[#6C25FF] px-2">
+              Email Address
+            </legend>
             <input
+              type="email"
               placeholder="Enter email address"
               {...register("email", {
                 required: "Email is required",
@@ -34,31 +42,41 @@ const Login = () => {
                   message: "Invalid email format",
                 },
               })}
-              className=" w-full outline-0 rounded-md"
+              className="w-full px-3 text-[14px] text-gray-900 outline-none  focus:border-none"
             />
           </fieldset>
           {errors.email && (
-            <p className="text-red-500 text-balance">{errors.email.message}</p>
+            <p className="text-[13px] text-[#DD4A3D]">{errors.email.message}</p>
           )}
-          <fieldset className="border border-gray-300 pb-2  px-3 rounded-md">
-            <legend className="text-sm  text-indigo-600">Password</legend>
+
+          {/* Password Field */}
+          <fieldset className="border border-gray-300 rounded-lg pb-2">
+            <legend className="text-[13px] text-[#6C25FF] px-2">
+              Password
+            </legend>
             <input
               type="password"
               placeholder="Enter password"
               {...register("password", {
-                required: "password is required",
+                required: "Password is required",
               })}
-              className=" w-full outline-0  rounded-md"
+              className="w-full text-[14px] text-gray-900 outline-none px-3 focus:border-none"
             />
           </fieldset>
           {errors.password && (
-            <p className="text-red-500">{errors.password.message}</p>
+            <p className="text-[13px] text-[#DD4A3D]">
+              {errors.password.message}
+            </p>
           )}
+
+          {/* Login Button */}
           <button
             type="submit"
             disabled={!isValid}
-            className={`font-semibold text-white p-2 mt-3 rounded-md w-full transition-all ${
-              isValid ? "bg-[#6C25FF]" : "bg-gray-300 cursor-not-allowed"
+            className={`w-full p-3 text-[16px] font-medium text-white rounded-lg transition-all ${
+              isValid
+                ? "bg-[#6C25FF] hover:bg-[#5a1fd1]"
+                : "bg-gray-300 cursor-not-allowed"
             }`}
           >
             Login
